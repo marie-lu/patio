@@ -15,18 +15,21 @@ export default function Home() {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: '#050505',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#050505'
+    justifyContent: 'space-around',
   },
   logo: {
     width: 300,
     height: 300,
-    align: "middle"
+    marginBottom: 50,
+    alignSelf: "center"
   },
   intro: {
     color: '#15E6FD',
     fontSize: 25,
+    marginTop: 100,
     marginHorizontal: 20,
     textAlign: 'center'
   }
