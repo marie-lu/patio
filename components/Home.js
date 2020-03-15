@@ -1,12 +1,12 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import patio from '../assets/patio.jpg'
 
 export default function Home() {
   return (
     <View style={styles.container}>
       <Text style={styles.intro}>
-      Find the nearest bar with outdoor seating!
+      Find the nearest bars and restaurants with outdoor seating!
       </Text>
       <Image source={patio} style={styles.logo} />
     </View>
