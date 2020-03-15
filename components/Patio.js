@@ -1,9 +1,11 @@
 import React from 'react';
 import Home from './Home'
-import { Image, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, FlatList } from 'react-native';
+import Loading from './Loading'
+import {fetchData, fetchLocation} from '../api'
+import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 
-export default class Results extends React.Component {
+export default class Patio extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,27 +14,36 @@ export default class Results extends React.Component {
       location: {},
       dataSource: {}
     }
+    this.pressHandler = this.pressHandler.bind(this)
   }
 
   componentDidMount(){
+    fetchLocation()
+  }
+
+  pressHandler() {
+
+    fetchData()
+
+    if(this.state.dataLoading) {
+      return(
+        <Loading />
+      )
+    }
+    return(
+      <View>
+        {this.state.dataSource.businesses.map(business => {
+          return <View><Text style={styles.intro}>{business.name}</Text></View>
+        })}
+      </View>
+    )
   }
 
   render() {
-
-    if(this.state.locationLoading || this.state.dataLoading){
-      return(
-        <View style={styles.container}>
-          <ActivityIndicator size="large" color="#15E6FD" />
-        </View>
-      )
-    }
-
+    
     return (
       <View style={styles.container}>
         <Home />
-        {/* {this.state.dataSource.businesses.map(business => {
-          return <View><Text style={styles.intro}>{business.name}</Text></View>
-        })} */}
         <TouchableOpacity>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Search!</Text>
