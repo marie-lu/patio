@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
       textAlign: 'center'
     },
     info: {
-      fontSize: 16,
+      fontSize: 18,
       color: '#050505'
     },
     row:{
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
       justifyContent: "space-between",
       alignItems: "center",
       width: '100%',
-      height: 40,
+      height: 45,
       backgroundColor: '#05BAC5',
       marginTop: 12,
       paddingHorizontal: 10
