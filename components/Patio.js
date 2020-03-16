@@ -74,7 +74,7 @@ export default class Patio extends React.Component {
     }
 
     if (this.state.searchPress && !this.state.dataLoading){
-      search = <AccordianList businesses={this.state.dataSource.businesses} />
+      search = <AccordianList businesses={this.state.dataSource.businesses} currentLocation={this.state.location} />
     }
 
     return (

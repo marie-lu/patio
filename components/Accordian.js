@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Image, View, TouchableOpacity, Text, StyleSheet} from "react-native";
+import { Image, View, TouchableOpacity, Text, StyleSheet, Linking} from "react-native";
 
 export default class Accordian extends Component{
 
@@ -17,8 +17,10 @@ export default class Accordian extends Component{
 
   render() {
     const { item } = this.props
+    const { currentLocation } = this.props
 
-    let imageUrl = {uri: `${item.image_url}`}
+    const destinationAddress = item.location.address1.split(' ').join('+')
+    const imageUrl = {uri: `${item.image_url}`}
 
     return (
       <View style={{width: '100%', paddingHorizontal: 20}}>
@@ -38,6 +40,7 @@ export default class Accordian extends Component{
               <Text style={styles.info}>{item.display_phone}</Text>
               <Text style={styles.info}>Price: {item.price}</Text>
               <Text style={styles.info}>Rating: {item.rating} out of 5</Text>
+              <Text style={{color: 'blue'}} onPress={() => Linking.openURL(`https://www.google.com/maps/dir/?api=1&origin=${currentLocation.lat},${currentLocation.lng}&destination=${destinationAddress}&travelmode=walking`)}>Get Walking Directions</Text>
             </View> 
             <Image source={imageUrl} style={{height: 150, width: 150, margin: 5}} />   
           </View>

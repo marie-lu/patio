@@ -9,7 +9,7 @@ export default function AccordianList (props) {
     <View style={styles.container}>
       { 
       props.businesses.map(item => {
-        return <View key={item.id} style={{width: '100%', margin: 0}}><Accordian item={item} /></View>
+        return <View key={item.id} style={{width: '100%', margin: 0}}><Accordian item={item} currentLocation={props.currentLocation}/></View>
       }) 
       }
     </View>
