@@ -1,7 +1,6 @@
 import React from 'react';
 import Home from './Home'
 import Loading from './Loading'
-import List from './List'
 import AccordianList from './AccordianList'
 import {YELP_API_KEY, GOOGLE_API_KEY} from '../keys'
 import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
@@ -42,12 +41,12 @@ export default class Patio extends React.Component {
       "Access-Control-Allow-Origin":"http://192.168.1.8:19006/"
     }};
   
-    return fetch(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?term=outdoor-space&latitude=${lat}&longitude=${lng}`, requestOptions)
+    return fetch(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?term=outdoor_seating&latitude=${lat}&longitude=${lng}&sort_by=distance&limit=10&open_now=true&categories=bars,restaurants`, requestOptions)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({...this.state,
           dataSource: responseJson,
-          dataLoading: false,
+          dataLoading: !this.state.dataLoading,
       }, function(){
       });
   
@@ -59,7 +58,7 @@ export default class Patio extends React.Component {
   }
 
   pressHandler(){
-    this.setState({...this.state, searchPress: true})
+    this.setState({...this.state, searchPress: !this.state.searchPress})
     this.fetchData(this.state.location.lat, this.state.location.lng)
   }
 
@@ -97,17 +96,17 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#050505',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   intro: {
-    color: '#15E6FD',
+    color: '#03F5CD',
     fontSize: 25,
     marginVertical: 50,
     textAlign: 'center'
   },
   button: {
     marginBottom: 50,
-    marginTop: 20,
+    marginTop: 25,
     width: 260,
     height: 50,
     alignItems: 'center',
