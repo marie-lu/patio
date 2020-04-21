@@ -12,4 +12,4 @@ Patio is a mobile app which uses your location to find the 10 currently open bar
 * Yelp Fusion Business API
 * Google Maps Platform Maps URLs
 
-
+![Patio Demo](PatioDemoGif.gif)
